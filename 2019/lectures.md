@@ -154,3 +154,79 @@ Jakub Jedelský
 - Monitoring
     - *Icinga* + *Grafana*
     - [grafana-dashboard-builder](https://github.com/jakubplichta/grafana-dashboard-builder)
+
+
+## Professional PostgreSQL monitoring made easy
+
+Kaarel Moppel
+
+- Důvody k monitorování
+    - Výpadek
+    - Výkon
+    - Predikce chování
+    - Sledování vytížení a využití
+- Úroveň monitoringu
+    - Dostupnost služby
+        - Např. cron skript, jednoduché řešení, cron script, ...
+    - Systémový monitoring
+        - CPU, RAM, swap, IO
+    - Analýza logů
+        - Pro případ potřeby analýzy problému
+        - Archivace logů na centrální místo
+    - ...
+
+- Parametry logování
+    - `log_destination`, varianta *csv*
+    - Pohledy na statistiky – dynamické a kumulativní
+- Extenze
+    - `pg_stat_statements` – must have 🙂
+    - `pgstattuple` – *bloat tables*
+    - `pg_buffercache` – efektivita *shared buffers*
+    - `pg_autoexplain` – pro ladění
+
+
+- Nástroje pro monitoring
+    - [Seznam na wiki](https://wiki.postgresql.org/wiki/Monitoring)
+- Ad hox monitoring
+    - pg_activity „interaktivní `pg_stat_statements`”
+    - pghero
+        - Rychlý náhled na stav databáze
+        - backup, index, vacuum. ... problémy
+- Kontinuální monitoring
+    - Obecné
+        - Icinga, Zabbix, ...
+    - Specifické pro PostgreSQL
+        - pghero, powa, pgwatch2
+
+**pgwatch2**
+
+- Používá `pg_stat_*` metriky
+    - Nepotřebuje admina na všechno
+- Používá Grafanu
+    - Dynamické dashboardy
+- Volitelně i posílá oznámení (dle )
+
+
+## pglogical
+
+Matěj Klonfar
+
+- Extenze `pglogical3`
+- Logická replikace pomocí pro PostgreSQL 9.4+
+- Podobně jako nativní logická replikace v PostgreSQL 10+
+- Dekóduje *WAL* a konstruuje SQL dotazy na standby
+    - Má i „klienty” do jiných systémů, např. RabbitMQ, Kafka apod.
+- Má jisté vlastnosti, které nativní nemá
+    - Možnost řešit konflikty
+
+
+## PostgeSQL v praxi
+
+Vratislav Beneš
+
+- PostgreSQL v korporátu
+    - Automotive
+    - Data z měření, kontroly kvality výroby
+    - Velká data, dlouho uchovávaná
+    - Různorodá (signály, stav senzorů, videa, ...)
+- Služba pro sběr a analýzu dat z výroby
