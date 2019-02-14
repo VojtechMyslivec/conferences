@@ -123,3 +123,34 @@ Pavel Stěhule
 - Změna časového pásma
     - „čas je pořád stejný”, mění se zobrazení času
 - Operátor `AT TIME ZONE`, uff...
+
+
+## Patroni
+
+Jan Tomsa
+
+- Motivace
+    - Automatizace *failover* mezi *stanby* a *master*
+- Patroni
+    - *Python controller* postgresu
+    - Používá *HAProxy* pro směrování klientů
+    - *etcd* pro interní metadata a dynamickou konfiguraci
+- Nástroje
+    - Patroni poskytuje *REST API* (využívá ho *HAProxy*)
+    - CLI `patronictl` pro ovládání clusteru
+- Poznámky
+    - HAProxy vynucuje timeout na spojení – pozor na dlouhé dotazy
+
+
+## Život PG serveru bez ručních zásahů
+
+Jakub Jedelský
+
+- Automatizace správy serverů
+    - Puppet
+    - OpenStack
+    - Foreman
+    - Vlastní klient pro Foreman
+- Monitoring
+    - *Icinga* + *Grafana*
+    - [grafana-dashboard-builder](https://github.com/jakubplichta/grafana-dashboard-builder)
